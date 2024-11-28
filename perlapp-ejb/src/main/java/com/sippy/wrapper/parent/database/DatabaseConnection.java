@@ -25,4 +25,10 @@ public class DatabaseConnection {
     Query query = entityManager.createNativeQuery("SELECT * FROM tnbs", TnbDao.class);
     return query.getResultList();
   }
+
+  @SuppressWarnings("unchecked")
+  public List<TnbDao> getNumberTnbs(String number) {
+    Query query = entityManager.createNativeQuery(String.format("SELECT tnb FROM tnbs WHERE tnb = %", number), TnbDao.class);
+    return query.getResultList();
+  }
 }
